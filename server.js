@@ -3,10 +3,10 @@ const express = require('express')
 const logger = require('morgan')
 const cors = require('cors')
 require('dotenv').config()
-const express = require('express')
 
 // import routers
 const indexRouter = require('./routes/index.js')
+const tacosRouter = require('./routes/tacos.js')
 
 // create the express app
 const app = express()
@@ -18,6 +18,7 @@ app.use(express.json())
 
 // mount imported routes
 app.use('/', indexRouter)
+app.use('/api/tacos', tacosRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {
