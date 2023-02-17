@@ -4,6 +4,7 @@ router.post('/', tacosCtrl.create)
 router.get('/', tacosCtrl.index)
 router.put('/:id', tacosCtrl.update)
 router.delete('/:id', tacosCtrl.delete)
+router.post('/:id/sauces', tacosCtrl.addSauce)
 
 
 

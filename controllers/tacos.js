@@ -1,4 +1,5 @@
-const { Taco } = require("../models")
+const { Taco, Sauce } = require("../models")
+
 
 const create = async (req, res) => {
   try {
@@ -42,10 +43,21 @@ const deleteTaco = async (req, res) => {
   }
 }
 
+const addSauce = async (req, res) => {
+  try {
+    req.body.tacoId = req.params.id
+    const sauce = await Sauce.create(req.body)
+    res.status(200).json(sauce)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 
 module.exports = {
   create,
   index,
   update,
-  delete: deleteTaco
+  delete: deleteTaco,
+  addSauce,
 }
