@@ -12,9 +12,15 @@ const create = async (req, res) => {
 
 const index = async (req, res) => {
   try {
-    const tacos = await Taco.findAll()
+    const tacos = await Taco.findAll({
+      include: [{ 
+        model: Sauce, 
+        as: 'sauces' 
+      }],
+    })
     res.status(200).json(tacos)
   } catch (error) {
+    console.log(error)
     res.status(500).json(error)
   }
 }
